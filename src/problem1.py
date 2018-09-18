@@ -2,8 +2,8 @@
 Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Dylan Verst.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -89,9 +89,16 @@ def problem1a(rectangle, square, thickness, window):
       :type window:    rg.RoseWindow
     """
     # --------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
+    rectangle.attach_to(window)
+    square.attach_to(window)
+    line = rg.Line(square.center, rg.Point(rectangle.get_center().x, rectangle.get_center().y-rectangle.get_height()/2))
+    line.thickness = thickness
+    line.color = rectangle.outline_color
+    line.attach_to(window)
+    window.render()
 
 
 def run_test_problem1b():
@@ -149,9 +156,16 @@ def problem1b(point, win, width, height, color):
       :type color:  str
     """
     # --------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
+    p1 = rg.Point(point.x - width / 2, point.y)
+    p2 = rg.Point(point.x + width / 2, point.y + height)
+    ellipse = rg.Ellipse(p1, p2)
+    ellipse.fill_color = color
+    ellipse.attach_to(win)
+    point.attach_to(win)
+    win.render()
 
 
 # ------------------------------------------------------------------------------
